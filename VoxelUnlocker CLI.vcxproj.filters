@@ -22,6 +22,9 @@
     <Filter Include="Исходные файлы\Functions\page\AutoStartup">
       <UniqueIdentifier>{6650d5a4-abdb-4ce4-8ef7-2927a98ddf8e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\Functions\page\Scheduler">
+      <UniqueIdentifier>{1286cc5b-8a5b-44c1-8403-58634ef21966}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mainwindow.c">
@@ -30,28 +33,25 @@
     <ClCompile Include="Intro.c">
       <Filter>Исходные файлы\Functions</Filter>
     </ClCompile>
-    <ClCompile Include="Choice.c">
-      <Filter>Исходные файлы\Functions</Filter>
-    </ClCompile>
     <ClCompile Include="Processing.c">
       <Filter>Исходные файлы\Functions</Filter>
     </ClCompile>
     <ClCompile Include="AutoStartup.c">
       <Filter>Исходные файлы\Functions\page\AutoStartup</Filter>
     </ClCompile>
+    <ClCompile Include="Task_SchedulerPAGE.c">
+      <Filter>Исходные файлы\Functions\page\Scheduler</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Intro.h">
       <Filter>Исходные файлы\Functions</Filter>
     </ClInclude>
-    <ClInclude Include="Choice.h">
-      <Filter>Исходные файлы\Functions</Filter>
-    </ClInclude>
     <ClInclude Include="Processing.h">
       <Filter>Исходные файлы\Functions</Filter>
     </ClInclude>
-    <ClInclude Include="AutoStartup.h">
-      <Filter>Исходные файлы\Functions\page\AutoStartup</Filter>
+    <ClInclude Include="pages.h">
+      <Filter>Исходные файлы\Functions\page</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

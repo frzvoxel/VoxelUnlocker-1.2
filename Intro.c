@@ -1,8 +1,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <Windows.h>
+#include <stdlib.h>
 
 void Intro() {
+    system("cls");
+
     const char* logo[] = {
         "__   __           _ _   _      _         _",
         "\\ \\ / /____ _____| | | | |_ _ | |___  __| |_____ _ _",

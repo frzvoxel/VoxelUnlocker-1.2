@@ -20,14 +20,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AutoStartup.c" />
-    <ClCompile Include="Choice.c" />
     <ClCompile Include="Intro.c" />
     <ClCompile Include="mainwindow.c" />
     <ClCompile Include="Processing.c" />
+    <ClCompile Include="Task_SchedulerPAGE.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AutoStartup.h" />
-    <ClInclude Include="Choice.h" />
+    <ClInclude Include="pages.h" />
     <ClInclude Include="Intro.h" />
     <ClInclude Include="Processing.h" />
   </ItemGroup>

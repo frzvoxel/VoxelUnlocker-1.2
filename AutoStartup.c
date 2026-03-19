@@ -1,4 +1,4 @@
-#include "AutoStartup.h"
+#include "pages.h"
 #include <stdio.h>
 #include "Intro.h"
 #include <stdlib.h>
@@ -64,7 +64,6 @@ void CheckAndResetWinlogonValues() {
 }
 
 void NEXTPAGE_STARTUP(void) {
-	system("cls");
 	Intro();
     CheckAndResetWinlogonValues();
 
