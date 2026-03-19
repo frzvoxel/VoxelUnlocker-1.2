@@ -26,9 +26,11 @@
     <ClCompile Include="hosts.c" />
     <ClCompile Include="Intro.c" />
     <ClCompile Include="mainwindow.c" />
+    <ClCompile Include="regedit.c" />
     <ClCompile Include="tmp.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Regedit.h" />
     <ClInclude Include="pages.h" />
     <ClInclude Include="Intro.h" />
   </ItemGroup>

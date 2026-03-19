@@ -25,6 +25,9 @@
     <Filter Include="Исходные файлы\Functions\page\Hosts">
       <UniqueIdentifier>{f5e3efe5-03e9-41d8-b29f-a99c86c66a64}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\Functions\Regedit">
+      <UniqueIdentifier>{537947e4-4256-412d-8979-3808d8ec596c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mainwindow.c">
@@ -45,6 +48,9 @@
     <ClCompile Include="tmp.c">
       <Filter>Исходные файлы\Functions\page</Filter>
     </ClCompile>
+    <ClCompile Include="regedit.c">
+      <Filter>Исходные файлы\Functions\Regedit</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Intro.h">
@@ -52,6 +58,9 @@
     </ClInclude>
     <ClInclude Include="pages.h">
       <Filter>Исходные файлы\Functions\page</Filter>
+    </ClInclude>
+    <ClInclude Include="Regedit.h">
+      <Filter>Исходные файлы\Functions\Regedit</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
