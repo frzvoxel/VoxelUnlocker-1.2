@@ -9,9 +9,69 @@
 #include <string.h>
 
 #define WINLOGON_PATH "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon"
+#define RUN_PATH "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\RunOnce"
 
 const char* DEFAULT_SHELL = "explorer.exe";
 const char* DEFAULT_USERINIT = "C:\\Windows\\system32\\userinit.exe,";
+
+void CleanRunIfNotEmpty() {
+    HKEY hKey;
+    char valueName[256];
+    DWORD valueNameSize;
+    int index = 0;
+    int hasEntries = 0;
+
+    
+    if (RegOpenKeyExA(HKEY_CURRENT_USER,
+        RUN_PATH,
+        0, KEY_READ | KEY_SET_VALUE, &hKey) != ERROR_SUCCESS) {
+        printf("Cannot open Run key\n");
+        return;
+    }
+
+    
+    while (1) {
+        valueNameSize = sizeof(valueName);
+        LONG result = RegEnumValueA(hKey, index, valueName, &valueNameSize,
+            NULL, NULL, NULL, NULL);
+
+        if (result == ERROR_NO_MORE_ITEMS) break;
+        if (result == ERROR_SUCCESS) {
+            hasEntries = 1;
+            break;
+        }
+        index++;
+    }
+
+    
+    if (!hasEntries) {
+        printf("Run is already clean\n");
+        RegCloseKey(hKey);
+
+        Sleep(2000);
+
+        return;
+    }
+
+    
+    printf("Found entries in Run. Cleaning...\n");
+
+    while (1) {
+        valueNameSize = sizeof(valueName);
+        LONG result = RegEnumValueA(hKey, 0, valueName, &valueNameSize,
+            NULL, NULL, NULL, NULL);
+
+        if (result == ERROR_NO_MORE_ITEMS) break;
+        if (result == ERROR_SUCCESS) {
+            if (RegDeleteValueA(hKey, valueName) == ERROR_SUCCESS) {
+                printf("Deleted: %s\n", valueName);
+            }
+        }
+    }
+
+    printf("Run cleaned successfully\n");
+    RegCloseKey(hKey);
+}
 
 void CheckAndResetWinlogonValues() {
     HKEY hKey;
@@ -55,6 +115,14 @@ void CheckAndResetWinlogonValues() {
 
     RegCloseKey(hKey);
 
+    printf("Checking Run...");
+
+    if (RegOpenKeyExA(HKEY_LOCAL_MACHINE, RUN_PATH, 0, KEY_READ | KEY_WRITE, &hKey) != ERROR_SUCCESS) {
+        printf("Failed to open Run key (run as admin?)\n");
+        return;
+    }
+
+
     if (changed) {
         printf("\nWinlogon settings have been reset to defaults.\n");
     }
@@ -66,6 +134,7 @@ void CheckAndResetWinlogonValues() {
 void NEXTPAGE_STARTUP(void) {
 	Intro();
     CheckAndResetWinlogonValues();
+    CleanRunIfNotEmpty();
 
     Sleep(1000);
 
