@@ -4,17 +4,8 @@
 #include "../regedit/Regedit.h"
 #include <stdlib.h>
 #include <Windows.h>
-
-#include <windows.h>
-#include <stdio.h>
 #include <string.h>
-
-#define WINLOGON_PATH "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon"
-#define RUN_PATH "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run"
-#define RUNONCE_PATH "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\RunOnce"
-
-const char* DEFAULT_SHELL = "explorer.exe";
-const char* DEFAULT_USERINIT = "C:\\Windows\\system32\\userinit.exe,";
+#include "define.h"
 
 void NEXTPAGE_STARTUP(void) {
 	Intro();
